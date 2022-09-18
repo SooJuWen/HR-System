@@ -1,4 +1,4 @@
-# Install flask on EC2 
+# Install flask on EC2 test
 # Either add "sudo" before all commands or use "sudo su" first
 
 #!/bin/bash
