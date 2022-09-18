@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body{
+        background-color: whitesmoke;
+    }
+</style>
+</head>
+<body>
+    <h1 style="color: #007cb5; text-align: center;">
+        Payroll list
+    </h1>
+    <input type="number" id="n1"/>
+    <input type="number" id="n2"/>
+
+    <button onclick="show()" id="click">Click</button>
+    <p id="hello"></p>
+
+    <script>
+        function show(){
+            var n1 = parseFloat(document.getElementById('n1').value);
+            var n2 = parseFloat(document.getElementById('n2').value);
+            
+            document.getElementById('hello').innerHTML = (n1 + n2).toFixed(2);
+            
+        }
+    </script>
+</body>
+
+</html>
