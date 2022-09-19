@@ -89,7 +89,16 @@ def AddEmp():
 def GetEmpName():
     employeeID = request.form['employee_id']
 
-    get_sql = "SELECT "
+    get_fn_sql = "SELECT first_name FROM " + employee_table + " WHERE employee_id" + " = " + employeeID
+    get_ln_sql = "SELECT last_name FROM " + employee_table + " WHERE employee_id" + " = " + employeeID
+
+    cursor = db_conn.cursor()
+
+    if employeeID != "":
+        first_name = cursor.execute(get_fn_sql)
+        last_name = cursor.execute(get_ln_sql)
+
+        
 
 
 if __name__ == '__main__':
