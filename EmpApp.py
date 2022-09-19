@@ -84,7 +84,7 @@ def AddEmp():
     return render_template('AddEmpOutput.html', name=emp_name)
 
 
-@app.route("/getempname", methods=['GET'])
+@app.route("/getEmpName", methods=['GET'])
 def GetEmpName():
     employeeID = request.form['employee_id']
 
