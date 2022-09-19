@@ -1,3 +1,4 @@
+from bisect import insort_left
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
@@ -18,7 +19,8 @@ db_conn = connections.Connection(
 
 )
 output = {}
-table = 'employee'
+employee_table = 'employee'
+payroll_table = 'payroll'
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -40,14 +42,17 @@ def AddEmp():
     location = request.form['location']
     emp_image_file = request.files['emp_image_file']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
+    insert_employee_sql = "INSERT INTO " + employee_table + " VALUES (%s, %s, %s, %s, %s)"
+    insert_payroll_sql = "INSERT INTO " + payroll_table + " VALUES (%s, %s, %s, %s, %s)"
+
     cursor = db_conn.cursor()
 
     if emp_image_file.filename == "":
         return "Please select a file"
 
     try:
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, pri_skill, location))
+        cursor.execute(insert_employee_sql, (emp_id, first_name, last_name, pri_skill, location))
+        cursor.execute(insert_payroll_sql, (emp_id, 0, 0, 0, 0))
         db_conn.commit()
         emp_name = "" + first_name + " " + last_name
         # Uplaod image file in S3 #
@@ -78,6 +83,13 @@ def AddEmp():
 
     print("all modification done...")
     return render_template('AddEmpOutput.html', name=emp_name)
+
+
+@app.route("/getEmpName", methods=['GET'])
+def GetEmpName():
+    employeeID = request.form['employee_id']
+
+    get_sql = "SELECT "
 
 
 if __name__ == '__main__':

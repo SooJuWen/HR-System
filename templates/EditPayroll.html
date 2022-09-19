@@ -131,21 +131,21 @@
     <main>
         <div class="container">
             <div class="title">Employee Info</div>
-            <form action="#">
+            <form action="/getEmpName" method="GET">
                 <div class="employee-details">
                     <div class="input-box">
                         <span class="details">Employee ID</span>
-                        <input style="display: inline-flex" type="type" placeholder="0000">
+                        <input style="display: inline-flex" type="type" placeholder="0000" name="employee_id">
                         <button class="get" type="submit">Get Employee</button>
 
                     </div>
                     <div class="input-box">
                         <span class="details">First name</span>
-                        <input disabled type="text" placeholder="first name">
+                        <input disabled type="text" placeholder="first name" name="first_name">
                     </div>
                     <div class="input-box">
                         <span class="details">Last name</span>
-                        <input disabled type="text" placeholder="last name">
+                        <input disabled type="text" placeholder="last name" name="last_name">
                     </div>
                 </div>
 
@@ -158,15 +158,15 @@
                 <div class="employee-details">
                     <div class="input-box">
                         <span class="details">Basic Salary</span>
-                        <input type="text" id="salary" placeholder="0.00" />
+                        <input type="number" id="salary" placeholder="0.00" />
                     </div>
                     <div class="input-box">
                         <span class="details">Allowance</span>
-                        <input type="text" id="allowance" placeholder="0.00" />
+                        <input type="number" id="allowance" placeholder="0.00" />
                     </div>
                     <div class="input-box">
                         <span class="details">Deduction</span>
-                        <input type="text" id="deduction" placeholder="0.00" />
+                        <input type="number" id="deduction" placeholder="0.00" />
                         <button class="calculate" onclick="calculatePayable()">Calculate payable</button>
                     </div>
                 </div>
@@ -185,9 +185,19 @@
 
     <script>
         function calculatePayable() {
-            var salary = parseFloat(document.getElementById('salary').value);
-            var allowance = parseFloat(document.getElementById('allowance').value);
-            var deduction = parseFloat(document.getElementById('deduction').value);
+            var salary = 0;
+            var allowance = 0;
+            var deduction = 0;
+
+            if(document.getElementById('salary').value.length != 0){
+                salary = parseFloat(document.getElementById('salary').value);
+            }
+            if(document.getElementById('allowance').value.length != 0){
+                allowance = parseFloat(document.getElementById('allowance').value);
+            }
+            if(document.getElementById('deduction').value.length != 0){
+                deduction = parseFloat(document.getElementById('deduction').value);
+            }
 
             document.getElementById('amount').innerHTML = (salary + allowance - deduction).toFixed(2);
         }
