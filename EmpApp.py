@@ -85,20 +85,24 @@ def AddEmp():
     return render_template('AddEmpOutput.html', name=emp_name)
 
 
-@app.route("/getEmpName", methods=['GET'])
+@app.route("/getempname", methods=['GET'])
 def GetEmpName():
     employeeID = request.form['employee_id']
 
     get_fn_sql = "SELECT first_name FROM " + employee_table + " WHERE employee_id" + " = " + employeeID
     get_ln_sql = "SELECT last_name FROM " + employee_table + " WHERE employee_id" + " = " + employeeID
 
-    cursor = db_conn.cursor()
+    cursor1 = db_conn.cursor()
+    cursor2 = db_conn.cursor()
 
     if employeeID != "":
-        first_name = cursor.execute(get_fn_sql)
-        last_name = cursor.execute(get_ln_sql)
+        cursor1.execute(get_fn_sql)
+        cursor2.execute(get_ln_sql)
 
-        
+        first_name = cursor1.fetchone()
+        last_name = cursor2.fetchone()    
+
+    open("EditPayroll.html").read().format(name=first_name)
 
 
 if __name__ == '__main__':

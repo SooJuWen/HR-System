@@ -136,12 +136,12 @@
                     <div class="input-box">
                         <span class="details">Employee ID</span>
                         <input style="display: inline-flex" type="type" placeholder="0000" name="employee_id">
-                        <button class="get" type="submit">Get Employee</button>
+                        <button formaction="/getempname" class="get" type="submit">Get Employee</button>
 
                     </div>
                     <div class="input-box">
                         <span class="details">First name</span>
-                        <input disabled type="text" placeholder="first name" name="first_name">
+                        <label>{name}</label>
                     </div>
                     <div class="input-box">
                         <span class="details">Last name</span>
@@ -166,7 +166,7 @@
                     </div>
                     <div class="input-box">
                         <span class="details">Deduction</span>
-                        <input type="number" id="deduction" placeholder="0.00" />
+                        <input type="number" id="deduction" placeholder="0.00"/>
                         <button class="calculate" onclick="calculatePayable()">Calculate payable</button>
                     </div>
                 </div>
