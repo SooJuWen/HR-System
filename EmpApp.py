@@ -24,7 +24,7 @@ payroll_table = 'payroll'
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('AddEmp.html')
+    return render_template('EditPayroll.html')
 
 
 @app.route("/about", methods=['POST'])
