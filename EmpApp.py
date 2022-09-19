@@ -1,4 +1,3 @@
-from bisect import insort_left
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
