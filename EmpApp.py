@@ -100,7 +100,7 @@ def GetEmpName():
     cursor1 = db_conn.cursor()
     cursor2 = db_conn.cursor()
 
-    if employeeID != "":
+    if emp_id != "":
         cursor1.execute(get_fn_sql)
         cursor2.execute(get_ln_sql)
 
