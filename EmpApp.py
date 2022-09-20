@@ -92,10 +92,10 @@ def AddEmp():
 
 @app.route("/getEmpName", methods=['GET'])
 def GetEmpName():
-    employeeID = request.form['emp_id']
+    emp_id = request.form['emp_id']
 
-    get_fn_sql = "SELECT first_name FROM " + employee_table + " WHERE emp_id" + " = " + employeeID
-    get_ln_sql = "SELECT last_name FROM " + employee_table + " WHERE emp_id" + " = " + employeeID
+    get_fn_sql = "SELECT first_name FROM " + employee_table + " WHERE emp_id" + " = " + emp_id
+    get_ln_sql = "SELECT last_name FROM " + employee_table + " WHERE emp_id" + " = " + emp_id
 
     cursor1 = db_conn.cursor()
     cursor2 = db_conn.cursor()
