@@ -33,7 +33,7 @@ def about():
     return render_template('www.intellipaat.com')
 
 
-@app.route("/changePage/editPayrollPage", methods=['GET'])
+@app.route("/changePage", methods=['GET'])
 def EditPayrollPage():
     return render_template('EditPayroll.html')
 
