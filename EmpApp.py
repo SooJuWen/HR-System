@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
@@ -30,6 +31,11 @@ def home():
 @app.route("/about", methods=['POST'])
 def about():
     return render_template('www.intellipaat.com')
+
+
+@app.route("/editPayrollPage", methods=['GET'])
+def EditPayrollPage():
+    return render_template('EditPayroll.html')
 
 
 @app.route("/addemp", methods=['POST'])
