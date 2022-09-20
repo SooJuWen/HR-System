@@ -25,7 +25,7 @@ payroll_table = 'payroll'
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('PayrollPage.html')
+    return render_template('EditPayroll.html')
 
 
 @app.route("/about", methods=['POST'])
@@ -33,7 +33,7 @@ def about():
     return render_template('www.intellipaat.com')
 
 
-@app.route("/editPayrollPage", methods=['GET'])
+@app.route("/changePage/editPayrollPage", methods=['GET'])
 def EditPayrollPage():
     return render_template('EditPayroll.html')
 
