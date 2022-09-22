@@ -103,8 +103,8 @@ def GetEmpName():
     if emp_id != "":
         cursor1.execute(get_fn_sql)
         cursor2.execute(get_ln_sql)
-
-        first_name = cursor1.fetchone()
+ 
+        first_name = str(cursor1.fetchone()[0])
         last_name = cursor2.fetchone()
 
     return render_template('EditPayroll.html', id="2211", name=first_name)
