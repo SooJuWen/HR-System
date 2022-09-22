@@ -107,7 +107,7 @@ def GetEmpName():
         first_name = cursor1.fetchone()
         last_name = cursor2.fetchone()
 
-    return render_template('EditPayroll.html', name=first_name)
+    return render_template('EditPayroll.html', id="1111", name=first_name)
     #open("EditPayroll.html").read().format(name=first_name)
 
 
