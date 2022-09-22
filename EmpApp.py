@@ -99,6 +99,7 @@ def GetEmpName():
 
     cursor1 = db_conn.cursor()
     cursor2 = db_conn.cursor()
+    db_conn.commit()
 
     if emp_id != "":
         cursor1.execute(get_fn_sql)
@@ -107,6 +108,9 @@ def GetEmpName():
         first_name = str(cursor1.fetchone()[0])
         last_name = str(cursor2.fetchone()[0])
 
+    cursor1.close()
+    cursor2.close()
+    
     return render_template('EditPayroll.html', id="2211", fname=first_name, lname=last_name)
     #open("EditPayroll.html").read().format(name=first_name)
 
