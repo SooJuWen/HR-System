@@ -129,31 +129,32 @@
     </h1>
 
     <main>
-        <form  action="/getEmpName" autocomplete="on" method="GET" enctype="multipart/form-data">
-            <div class="container">
-                <div class="title">Employee Info</div>
-                <div class="innerForm">
-                    <div class="employee-details">
-                        <div class="input-box">
+
+        <div class="container">
+            <div class="title">Employee Info</div>
+            <div class="innerForm">
+                <div class="employee-details">
+                    <div class="input-box">
+                        <form action="/getEmpName" autocomplete="on" method="GET" enctype="multipart/form-data">
                             <span class="details">Employee ID</span>
-                            <input style="display: inline-flex" type="number" placeholder="ex:0000" value="{{ id }}"
+                            <input style="display: inline-flex" type="text" placeholder="ex:0000" value="{{ id }}"
                                 name="emp_id" />
                             <button class="get" type="submit">Get Employee</button>
-
-                        </div>
-                        <div class="input-box">
-                            <span class="details">First name</span>
-                            <input disabled type="text" value="{{ fname }}" name="last_name">
-                        </div>
-                        <div class="input-box">
-                            <span class="details">Last name</span>
-                            <input disabled type="text" placeholder="{{ lname }}" name="last_name">
-                        </div>
+                        </form>
                     </div>
-
+                    <div class="input-box">
+                        <span class="details">First name</span>
+                        <input disabled type="text" value="{{ fname }}" name="last_name">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Last name</span>
+                        <input disabled type="text" placeholder="{{ lname }}" name="last_name">
+                    </div>
                 </div>
+
             </div>
-        </form>
+        </div>
+
 
         <div class="container" style="margin-top: 30px;">
             <div class="title">Payroll Info</div>
