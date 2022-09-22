@@ -105,9 +105,9 @@ def GetEmpName():
         cursor2.execute(get_ln_sql)
  
         first_name = str(cursor1.fetchone()[0])
-        last_name = cursor2.fetchone()
+        last_name = str(cursor2.fetchone()[0])
 
-    return render_template('EditPayroll.html', id="2211", name=first_name)
+    return render_template('EditPayroll.html', id="2211", fname=first_name, lname=last_name)
     #open("EditPayroll.html").read().format(name=first_name)
 
 
