@@ -3,7 +3,8 @@ from flask import Flask, render_template, request
 from pymysql import connections
 import os
 import boto3
-import win32api
+import tkinter
+from tkinter import messagebox
 from config import *
 
 app = Flask(__name__)
@@ -161,9 +162,19 @@ def UpdatePayroll():
 
     if(emp_id != ""):
         cursor.execute(update_sql)
-        win32api.MessageBox(0, 'The info is successfully updated', 'Update Message')
+        # This code is to hide the main tkinter window
+        root = tkinter.Tk()
+        root.withdraw()
+
+        # Message Box
+        messagebox.showinfo("Update Message", "The info is successfully updated")
     else:
-        win32api.MessageBox(0, 'Please enter employee ID!', 'Update Message')
+        # This code is to hide the main tkinter window
+        root = tkinter.Tk()
+        root.withdraw()
+
+        # Message Box
+        messagebox.showinfo("Update Message", "Please enter employee ID")
 
     cursor.close()
 
