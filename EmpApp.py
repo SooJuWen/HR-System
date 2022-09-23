@@ -151,6 +151,7 @@ def UpdatePayroll():
     update_sql = "UPDATE " + payroll_table + " SET salary = " + salary + ", allowance = " + allowance + ", deduction = " + deduction + ", net_amount = " + netAmount + " WHERE emp_id = " + emp_id
 
     cursor = db_conn.cursor()
+    db_conn.commit()
 
     if(emp_id != ""):
         cursor.execute(update_sql)
