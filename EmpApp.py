@@ -3,6 +3,7 @@ from flask import Flask, render_template, request
 from pymysql import connections
 import os
 import boto3
+import win32api
 from config import *
 
 app = Flask(__name__)
@@ -160,6 +161,9 @@ def UpdatePayroll():
 
     if(emp_id != ""):
         cursor.execute(update_sql)
+        win32api.MessageBox(0, 'The info is successfully updated', 'Update Message')
+    else:
+        win32api.MessageBox(0, 'Please enter employee ID!', 'Update Message')
 
     cursor.close()
 
