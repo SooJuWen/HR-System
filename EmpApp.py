@@ -160,19 +160,6 @@ def UpdatePayroll():
 
     if(emp_id != ""):
         cursor.execute(update_sql)
-        # This code is to hide the main tkinter window
-        root = tkinter.Tk()
-        root.withdraw()
-
-        # Message Box
-        messagebox.showinfo("Update Message", "The info is successfully updated")
-    else:
-        # This code is to hide the main tkinter window
-        root = tkinter.Tk()
-        root.withdraw()
-
-        # Message Box
-        messagebox.showinfo("Update Message", "Please enter employee ID")
 
     cursor.close()
 
