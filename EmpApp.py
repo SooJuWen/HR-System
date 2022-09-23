@@ -141,7 +141,7 @@ def GetEmpName():
 
 @app.route("/payroll", methods=["POST"])
 def UpdatePayroll():
-    emp_id = "1111"
+    emp_id = request.form['emp_id']
     salary = float(request.form['salary'])
     allowance = float(request.form['allowance'])
     deduction= float(request.form['deduction'])
