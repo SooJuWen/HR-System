@@ -136,12 +136,11 @@
                 <div class="innerForm">
                     <div class="employee-details">
                         <div class="input-box">
-                            <form action="/getEmpName" autocomplete="on" method="GET" enctype="multipart/form-data">
-                                <span class="details">Employee ID</span>
+                            
                                 <input style="display: inline-flex" type="text" placeholder="ex:0000" value="{{ id }}"
                                     name="emp_id" />
-                                <button class="get" type="submit">Get Employee</button>
-                            </form>
+                                <button formaction="getEmpName" class="get" type="submit">Get Employee</button>
+                            
                         </div>
                         <div class="input-box">
                             <span class="details">First name</span>
@@ -155,7 +154,7 @@
 
                 </div>
             </div>
-            
+
             <div class="container" style="margin-top: 30px;">
                 <div class="title">Payroll Info</div>
                 <div class="innerForm">
