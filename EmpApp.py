@@ -142,11 +142,16 @@ def GetEmpName():
 @app.route("/payroll", methods=["POST"])
 def UpdatePayroll():
     emp_id = request.form['emp_id']
-    salary = float(request.form['salary'])
-    allowance = float(request.form['allowance'])
-    deduction= float(request.form['deduction'])
+    salaryFloat = float(request.form['salary'])
+    allowanceFloat = float(request.form['allowance'])
+    deductionFloat = float(request.form['deduction'])
 
-    netAmount = salary + allowance - deduction
+    netAmountFloat = salaryFloat + allowanceFloat - deductionFloat
+
+    salary = "{:.2f}".format(salaryFloat)
+    allowance = "{:.2f}".format(allowanceFloat)
+    deduction = "{:.2f}".format(deductionFloat)
+    netAmount = "{:.2f}".format(netAmountFloat)
 
     update_sql = "UPDATE " + payroll_table + " SET salary = " + salary + ", allowance = " + allowance + ", deduction = " + deduction + ", net_amount = " + netAmount + " WHERE emp_id = " + emp_id
 
