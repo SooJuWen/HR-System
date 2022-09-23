@@ -3,8 +3,8 @@ from flask import Flask, render_template, request
 from pymysql import connections
 import os
 import boto3
-from tk import tkinter
-from tk import messagebox
+import tkinter
+from tkinter import messagebox
 from config import *
 
 app = Flask(__name__)
