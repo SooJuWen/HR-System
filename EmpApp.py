@@ -99,12 +99,14 @@ def GetEmpName():
     get_sal_sql = "SELECT salary FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
     get_alw_sql = "SELECT allowance FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
     get_ded_sql = "SELECT deduction FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
+    get_net_sql = "SELECT net_amount FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
 
     cursor1 = db_conn.cursor()
     cursor2 = db_conn.cursor()
     cursor3 = db_conn.cursor()
     cursor4 = db_conn.cursor()
     cursor5 = db_conn.cursor()
+    cursor6 = db_conn.cursor()
 
     db_conn.commit()
 
@@ -114,21 +116,48 @@ def GetEmpName():
         cursor3.execute(get_sal_sql)
         cursor4.execute(get_alw_sql)
         cursor5.execute(get_ded_sql)
+        cursor6.execute(get_net_sql)
  
         first_name = str(cursor1.fetchone()[0])
         last_name = str(cursor2.fetchone()[0])
         salaryFloat = float(cursor3.fetchone()[0])
         allowanceFloat = float(cursor4.fetchone()[0])
         deductionFloat = float(cursor5.fetchone()[0])
+        netAmountFloat = float(cursor6.fetchone()[0])
         salary = "{:.2f}".format(salaryFloat)
         allowance = "{:.2f}".format(allowanceFloat)
         deduction = "{:.2f}".format(deductionFloat)
+        netAmount = "{:.2f}".format(netAmountFloat)
 
     cursor1.close()
     cursor2.close()
+    cursor3.close()
+    cursor4.close()
+    cursor5.close()
+    cursor6.close()
 
-    return render_template('EditPayroll.html', id=emp_id, fname=first_name, lname=last_name, sal=salary, alw=allowance, ded=deduction)
-    #open("EditPayroll.html").read().format(name=first_name)
+    return render_template('EditPayroll.html', id=emp_id, fname=first_name, lname=last_name, sal=salary, alw=allowance, ded=deduction, netA=netAmount)
+
+
+@app.route("/updatePayroll", methods['PUT'])
+def UpdatePayroll():
+    emp_id = request.args['emp_id']
+    salary = float(request.args['salary'])
+    allowance = float(request.args['allowance'])
+    deduction= float(request.args['deduction'])
+
+    netAmount = salary + allowance - deduction
+
+    update_sql = "UPDATE " + payroll_table + " SET salary = " + salary + ", allowance = " + allowance + ", deduction = " + deduction + ", net_amount = " + netAmount + " WHERE emp_id = " + emp_id
+
+    cursor = db_conn.cursor()
+
+    if(emp_id != ""):
+        cursor.execute(update_sql)
+
+    cursor.close()
+
+    
 
 
 if __name__ == '__main__':
