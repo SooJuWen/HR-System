@@ -139,7 +139,7 @@ def GetEmpName():
     return render_template('EditPayroll.html', id=emp_id, fname=first_name, lname=last_name, sal=salary, alw=allowance, ded=deduction, netA=netAmount)
 
 
-@app.route("/updatePayroll", methods=['PUT'])
+@app.route("/updatePayroll", methods=["POST"])
 def UpdatePayroll():
     emp_id = "1111"
     salary = float(request.args['salary'])
