@@ -117,10 +117,12 @@ def GetEmpName():
  
         first_name = str(cursor1.fetchone()[0])
         last_name = str(cursor2.fetchone()[0])
-        salary = str(cursor3.fetchone()[0])
-        allowance = str(cursor4.fetchone()[0])
-        deduction = str(cursor5.fetchone()[0])
-
+        salaryFloat = float(cursor3.fetchone()[0])
+        allowanceFloat = float(cursor4.fetchone()[0])
+        deductionFloat = float(cursor5.fetchone()[0])
+        salary = "{:.2f}".format(salaryFloat)
+        allowance = "{:.2f}".format(allowanceFloat)
+        deduction = "{:.2f}".format(deductionFloat)
 
     cursor1.close()
     cursor2.close()
