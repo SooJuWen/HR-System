@@ -142,9 +142,9 @@ def GetEmpName():
 @app.route("/payroll", methods=["POST"])
 def UpdatePayroll():
     emp_id = "1111"
-    salary = float(request.args['salary'])
-    allowance = float(request.args['allowance'])
-    deduction= float(request.args['deduction'])
+    salary = float(request.form['salary'])
+    allowance = float(request.form['allowance'])
+    deduction= float(request.form['deduction'])
 
     netAmount = salary + allowance - deduction
 
