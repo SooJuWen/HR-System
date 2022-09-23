@@ -155,37 +155,37 @@
             </div>
         </div>
 
-
-        <div class="container" style="margin-top: 30px;">
-            <div class="title">Payroll Info</div>
-            <div class="innerForm">
-                <div class="employee-details">
-                    <div class="input-box">
-                        <span class="details">Basic Salary</span>
-                        <input type="number" id="salary" placeholder="0.00" name="salary" />
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Allowance</span>
-                        <input type="number" id="allowance" placeholder="0.00" name="allowance" />
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Deduction</span>
-                        <input type="number" id="deduction" placeholder="0.00" name="deduction" />
-                        <button class="calculate" onclick="calculatePayable()">Calculate payable</button>
+        <form action="updatePayroll">
+            <div class="container" style="margin-top: 30px;">
+                <div class="title">Payroll Info</div>
+                <div class="innerForm">
+                    <div class="employee-details">
+                        <div class="input-box">
+                            <span class="details">Basic Salary</span>
+                            <input type="number" id="salary" placeholder="0.00" name="salary" value="{{ sal }}"/>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Allowance</span>
+                            <input type="number" id="allowance" placeholder="0.00" name="allowance" value="{{ alw }}"/>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Deduction</span>
+                            <input type="number" id="deduction" placeholder="0.00" name="deduction" value="{{ ded }}"/>
+                            <button class="calculate" onclick="calculatePayable()">Calculate payable</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="text-amount-container">
-            <label>Net Amount Payable: RM </label>
-            <label id="amount" class="amount"></label>
-        </div>
+            <div class="text-amount-container">
+                <label>Net Amount Payable: RM </label>
+                <label id="amount" class="amount"></label>
+            </div>
 
-        <div class="update-button-container">
-            <button>Update Payroll</button>
-        </div>
-
+            <div class="update-button-container">
+                <button type="submit">Update Payroll</button>
+            </div>
+        </form>
     </main>
 
     <script>
