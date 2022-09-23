@@ -1,11 +1,10 @@
 from crypt import methods
-import tkinter
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
 import boto3
-from tk import tkinter
-from tk import messagebox
+from tkinter import tk
+from tkinter import messagebox
 from config import *
 
 app = Flask(__name__)
@@ -164,14 +163,14 @@ def UpdatePayroll():
     if(emp_id != ""):
         cursor.execute(update_sql)
         # This code is to hide the main tkinter window
-        root = tkinter.Tk()
+        root = tk.Tk()
         root.withdraw()
 
         # Message Box
         messagebox.showinfo("Update Message", "The info is successfully updated")
     else:
         # This code is to hide the main tkinter window
-        root = tkinter.Tk()
+        root = tk.Tk()
         root.withdraw()
 
         # Message Box
