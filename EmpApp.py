@@ -91,54 +91,52 @@ def AddEmp():
 
 
 @app.route("/getEmpName", methods=['GET'])
-def GetEmpName(innerCall):
+def GetEmpName():
     emp_id = request.args['emp_id']
-    if innerCall == "y":
-        return emp_id
-    else:
-        get_fn_sql = "SELECT first_name FROM " + employee_table + " WHERE emp_id" + " = " + emp_id
-        get_ln_sql = "SELECT last_name FROM " + employee_table + " WHERE emp_id" + " = " + emp_id
-        get_sal_sql = "SELECT salary FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
-        get_alw_sql = "SELECT allowance FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
-        get_ded_sql = "SELECT deduction FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
-        get_net_sql = "SELECT net_amount FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
 
-        cursor1 = db_conn.cursor()
-        cursor2 = db_conn.cursor()
-        cursor3 = db_conn.cursor()
-        cursor4 = db_conn.cursor()
-        cursor5 = db_conn.cursor()
-        cursor6 = db_conn.cursor()
-
-        db_conn.commit()
-
-        if emp_id != "":
-            cursor1.execute(get_fn_sql)
-            cursor2.execute(get_ln_sql)
-            cursor3.execute(get_sal_sql)
-            cursor4.execute(get_alw_sql)
-            cursor5.execute(get_ded_sql)
-            cursor6.execute(get_net_sql)
+    get_fn_sql = "SELECT first_name FROM " + employee_table + " WHERE emp_id" + " = " + emp_id
+    get_ln_sql = "SELECT last_name FROM " + employee_table + " WHERE emp_id" + " = " + emp_id
+    get_sal_sql = "SELECT salary FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id        
+    get_alw_sql = "SELECT allowance FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
+    get_ded_sql = "SELECT deduction FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
+    get_net_sql = "SELECT net_amount FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
     
-            first_name = str(cursor1.fetchone()[0])
-            last_name = str(cursor2.fetchone()[0])
-            salaryFloat = float(cursor3.fetchone()[0])
-            allowanceFloat = float(cursor4.fetchone()[0])
-            deductionFloat = float(cursor5.fetchone()[0])
-            netAmountFloat = float(cursor6.fetchone()[0])
-            salary = "{:.2f}".format(salaryFloat)
-            allowance = "{:.2f}".format(allowanceFloat)
-            deduction = "{:.2f}".format(deductionFloat)
-            netAmount = "{:.2f}".format(netAmountFloat)
+    cursor1 = db_conn.cursor()
+    cursor2 = db_conn.cursor()
+    cursor3 = db_conn.cursor()
+    cursor4 = db_conn.cursor()
+    cursor5 = db_conn.cursor()
+    cursor6 = db_conn.cursor()
 
-        cursor1.close()
-        cursor2.close()
-        cursor3.close()
-        cursor4.close()
-        cursor5.close()
-        cursor6.close()
+    db_conn.commit()
 
-        return render_template('EditPayroll.html', id=emp_id, fname=first_name, lname=last_name, sal=salary, alw=allowance, ded=deduction, netA=netAmount)
+    if emp_id != "":
+        cursor1.execute(get_fn_sql)
+        cursor2.execute(get_ln_sql)
+        cursor3.execute(get_sal_sql)
+        cursor4.execute(get_alw_sql)
+        cursor5.execute(get_ded_sql)
+        cursor6.execute(get_net_sql)
+    
+        first_name = str(cursor1.fetchone()[0])
+        last_name = str(cursor2.fetchone()[0])
+        salaryFloat = float(cursor3.fetchone()[0])
+        allowanceFloat = float(cursor4.fetchone()[0])
+        deductionFloat = float(cursor5.fetchone()[0])
+        netAmountFloat = float(cursor6.fetchone()[0])
+        salary = "{:.2f}".format(salaryFloat)
+        allowance = "{:.2f}".format(allowanceFloat)
+        deduction = "{:.2f}".format(deductionFloat)
+        netAmount = "{:.2f}".format(netAmountFloat)
+
+    cursor1.close()
+    cursor2.close()
+    cursor3.close()
+    cursor4.close()
+    cursor5.close()
+    cursor6.close()
+
+    return render_template('EditPayroll.html', id=emp_id, fname=first_name, lname=last_name, sal=salary, alw=allowance, ded=deduction, netA=netAmount)
 
 
 @app.route("/updatePayroll", methods=["GET", "POST"])

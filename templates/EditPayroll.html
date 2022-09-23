@@ -130,48 +130,49 @@
 
     <main>
 
-        <div class="container">
-            <div class="title">Employee Info</div>
-            <div class="innerForm">
-                <div class="employee-details">
-                    <div class="input-box">
-                        <form action="/getEmpName" autocomplete="on" method="GET" enctype="multipart/form-data">
-                            <span class="details">Employee ID</span>
-                            <input style="display: inline-flex" type="text" placeholder="ex:0000" value="{{ id }}"
-                                name="emp_id" />
-                            <button class="get" type="submit">Get Employee</button>
-                        </form>
+        <form action="/updatePayroll" method="POST" autocomplete="on" enctype="multipart/form-data">
+            <div class="container">
+                <div class="title">Employee Info</div>
+                <div class="innerForm">
+                    <div class="employee-details">
+                        <div class="input-box">
+                            <form action="/getEmpName" autocomplete="on" method="GET" enctype="multipart/form-data">
+                                <span class="details">Employee ID</span>
+                                <input style="display: inline-flex" type="text" placeholder="ex:0000" value="{{ id }}"
+                                    name="emp_id" />
+                                <button class="get" type="submit">Get Employee</button>
+                            </form>
+                        </div>
+                        <div class="input-box">
+                            <span class="details">First name</span>
+                            <input disabled type="text" value="{{ fname }}" name="last_name">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Last name</span>
+                            <input disabled type="text" placeholder="{{ lname }}" name="last_name">
+                        </div>
                     </div>
-                    <div class="input-box">
-                        <span class="details">First name</span>
-                        <input disabled type="text" value="{{ fname }}" name="last_name">
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Last name</span>
-                        <input disabled type="text" placeholder="{{ lname }}" name="last_name">
-                    </div>
+
                 </div>
-
             </div>
-        </div>
-
-        <form action="/updatePayroll" method="POST">
+            
             <div class="container" style="margin-top: 30px;">
                 <div class="title">Payroll Info</div>
                 <div class="innerForm">
                     <div class="employee-details">
                         <div class="input-box">
                             <span class="details">Basic Salary</span>
-                            <input type="text" id="salary" placeholder="0.00" name="salary" value="{{ sal }}"/>
+                            <input type="text" id="salary" placeholder="0.00" name="salary" value="{{ sal }}" />
                         </div>
                         <div class="input-box">
                             <span class="details">Allowance</span>
-                            <input type="text" id="allowance" placeholder="0.00" name="allowance" value="{{ alw }}"/>
+                            <input type="text" id="allowance" placeholder="0.00" name="allowance" value="{{ alw }}" />
                         </div>
                         <div class="input-box">
                             <span class="details">Deduction</span>
-                            <input type="text" id="deduction" placeholder="0.00" name="deduction" value="{{ ded }}"/>
-                            <button type="button" class="calculate" onclick="calculatePayable()">Calculate payable</button>
+                            <input type="text" id="deduction" placeholder="0.00" name="deduction" value="{{ ded }}" />
+                            <button type="button" class="calculate" onclick="calculatePayable()">Calculate
+                                payable</button>
                         </div>
                     </div>
                 </div>
@@ -185,6 +186,7 @@
             <div class="update-button-container">
                 <button type="submit">Update Payroll</button>
             </div>
+
         </form>
     </main>
 
