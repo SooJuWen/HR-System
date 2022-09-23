@@ -90,7 +90,7 @@ def AddEmp():
     return render_template('AddEmpOutput.html', name=emp_name)
 
 
-@app.route("/updatePayroll/getEmpName", methods=['GET'])
+@app.route("/getEmpName", methods=['GET'])
 def GetEmpName():
     emp_id = request.args['emp_id']
 
