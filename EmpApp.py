@@ -188,10 +188,10 @@ def payrollList():
         allowanceFloat = result[col][4]
         deductionFloat = result[col][5]
         netAmountFloat = result[col][6]
-        arr[col].append(str(salaryFloat))
-        arr[col].append(str(allowanceFloat))
-        arr[col].append(str(deductionFloat))
-        arr[col].append(str(netAmountFloat))
+        arr[col].append("{:.2f}".format(salaryFloat))
+        arr[col].append("{:.2f}".format(allowanceFloat))
+        arr[col].append("{:.2f}".format(deductionFloat))
+        arr[col].append("{:.2f}".format(netAmountFloat))
 
     cursor.close()
 
