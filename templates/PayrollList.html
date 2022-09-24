@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Employee Payroll List</title>
     <style>
@@ -7,6 +8,7 @@
             color: #007cb5;
             text-align: center;
         }
+
         button {
             color: #ffffff;
             font-size: large;
@@ -21,30 +23,38 @@
             margin-right: 35px;
             margin-bottom: 20px;
         }
+
         button:hover {
             color: #007cb5;
             background-color: #ffffff;
             font-weight: bold;
             border: 2px solid #007cb5;
         }
+
         table {
             border-collapse: collapse;
             width: 95%;
             margin: 0px 25px 10px 25px;
         }
-        td, th {
+
+        td,
+        th {
             border: 2px solid rgb(215, 215, 215);
             font-size: large;
             text-align: center;
             padding: 10px 8px;
         }
+
         tr:nth-child(even) {
             /* background-color: #03F2FF; */
-            background-color: #23b0f1;;
+            background-color: #23b0f1;
+            ;
         }
+
         .empNames {
             text-align: left;
         }
+
         .empAttend {
             width: 20px;
             height: 20px;
@@ -55,23 +65,12 @@
             var count = 0;
             var tableBody = document.getElementById("contents");
 
-            tableData.forEach(function(rowData) {
+            tableData.forEach(function (rowData) {
                 var row = document.createElement('tr');
 
-                rowData.forEach(function(cellData) {
+                rowData.forEach(function (cellData) {
                     var cell = document.createElement('td');
-                    if (cellData != 1 && cellData != 0 && cellData != -1)
-                        cell.appendChild(document.createTextNode(cellData));
-                    else {
-                        if (cellData == 1)
-                            var textNode = document.createTextNode("Present");
-                        else if (cellData == 0)
-                            var textNode = document.createTextNode("Absent");
-                        else
-                            var textNode = document.createTextNode(" --- ");
-                        cell.appendChild(textNode);
-                    }
-                    
+                    cell.appendChild(document.createTextNode(cellData));
                     row.appendChild(cell);
                 });
 
@@ -82,29 +81,25 @@
         }
     </script>
 </head>
+
 <body onload="createTable({{ content }})">
     <h1>Employee Payroll List</h1>
-    <!-- <div>
-        <form action="/">
-            <button formaction="/">Back</button>
-            <button formaction="/manageAtt" style="float: right">Manage Attendance</button>
-        </form>
-    </div> -->
 
     <table>
         <tr style="background-color: rgb(225, 225, 225);">
-          <th>No.</th>
-          <th>Employee Name</th>
-          <th>Emp ID</th>
-          <th>Salary</th>
-          <th>Allowance</th>
-          <th>Deduction</th>
-          <th>Net Amount Payable</th>
+            <th>No.</th>
+            <th>Employee Name</th>
+            <th>Emp ID</th>
+            <th>Salary</th>
+            <th>Allowance</th>
+            <th>Deduction</th>
+            <th>Net Amount Payable</th>
         </tr>
         <tbody id="contents">
         </tbody>
-      </table>
+    </table>
 
-      <p id="countEmp" style="text-align: center;"></p>
+    <p id="countEmp" style="text-align: center;"></p>
 </body>
+
 </html>
