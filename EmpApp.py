@@ -1,4 +1,5 @@
 from crypt import methods
+from unittest import result
 from flask import Flask, render_template, request
 from pymysql import connections
 import os
@@ -19,9 +20,6 @@ db_conn = connections.Connection(
 
 )
 output = {}
-employee_table = 'employee'
-payroll_table = 'payroll'
-
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
@@ -47,8 +45,8 @@ def AddEmp():
     location = request.form['location']
     emp_image_file = request.files['emp_image_file']
 
-    insert_employee_sql = "INSERT INTO " + employee_table + " VALUES (%s, %s, %s, %s, %s)"
-    insert_payroll_sql = "INSERT INTO " + payroll_table + " VALUES (%s, %s, %s, %s, %s)"
+    insert_employee_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
+    insert_payroll_sql = "INSERT INTO payroll VALUES (%s, %s, %s, %s, %s)"
 
     cursor = db_conn.cursor()
 
@@ -94,12 +92,12 @@ def AddEmp():
 def GetEmpName():
     emp_id = request.args['emp_id']
 
-    get_fn_sql = "SELECT first_name FROM " + employee_table + " WHERE emp_id" + " = " + emp_id
-    get_ln_sql = "SELECT last_name FROM " + employee_table + " WHERE emp_id" + " = " + emp_id
-    get_sal_sql = "SELECT salary FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id        
-    get_alw_sql = "SELECT allowance FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
-    get_ded_sql = "SELECT deduction FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
-    get_net_sql = "SELECT net_amount FROM " + payroll_table + " WHERE emp_id" + " = " + emp_id
+    get_fn_sql = "SELECT first_name FROM employee WHERE emp_id" + " = " + emp_id
+    get_ln_sql = "SELECT last_name FROM employee WHERE emp_id" + " = " + emp_id
+    get_sal_sql = "SELECT salary FROM payroll WHERE emp_id" + " = " + emp_id        
+    get_alw_sql = "SELECT allowance FROM payroll WHERE emp_id" + " = " + emp_id
+    get_ded_sql = "SELECT deduction FROM payroll WHERE emp_id" + " = " + emp_id
+    get_net_sql = "SELECT net_amount FROM payroll WHERE emp_id" + " = " + emp_id
     
     cursor1 = db_conn.cursor()
     cursor2 = db_conn.cursor()
@@ -153,7 +151,7 @@ def UpdatePayroll():
     deduction = "{:.2f}".format(deductionFloat)
     netAmount = "{:.2f}".format(netAmountFloat)
 
-    update_sql = "UPDATE " + payroll_table + " SET salary = " + salary + ", allowance = " + allowance + ", deduction = " + deduction + ", net_amount = " + netAmount + " WHERE emp_id = " + emp_id
+    update_sql = "UPDATE payroll SET salary = " + salary + ", allowance = " + allowance + ", deduction = " + deduction + ", net_amount = " + netAmount + " WHERE emp_id = " + emp_id
 
     cursor = db_conn.cursor()
     db_conn.commit()
@@ -164,6 +162,30 @@ def UpdatePayroll():
     cursor.close()
 
     return render_template('EditPayroll.html')
+
+
+@app.route("/getPayrollList", methods=["GET"])
+def payrollList():
+    select_sql = "SELECT employee.emp_id, employee.first_name, employee.last_name, payroll.salary, payroll.allowance, payroll.deduction, payroll.net_amount FROM employee, payroll WHERE employee.emp_id = payroll.emp_id"
+    cursor = db_conn.cursor()
+    cursor.execute(select_sql)
+    db_conn.commit()
+    result = cursor.fetchall()
+
+    arr = []
+    for col in range(len(result)):
+        arr.append([])
+        arr[col].append(col + 1)
+        arr[col].append(result[col][1] + result[col][2])
+        arr[col].append(result[col][0])
+        arr[col].append(result[col][3])
+        arr[col].append(result[col][4])
+        arr[col].append(result[col][5])
+        arr[col].append(result[col][6])
+
+    cursor.close()
+
+    return render_template("PayrollList.html", contents=arr)
 
 
 if __name__ == '__main__':
