@@ -128,14 +128,16 @@ def GetEmpName():
             deduction = "{:.2f}".format(deductionFloat)
             netAmount = "{:.2f}".format(netAmountFloat)
 
-    cursor1.close()
-    cursor2.close()
-    cursor3.close()
-    cursor4.close()
-    cursor5.close()
-    cursor6.close()
+            cursor1.close()
+            cursor2.close()
+            cursor3.close()
+            cursor4.close()
+            cursor5.close()
+            cursor6.close()
 
-    return render_template('EditPayroll.html', id=emp_id, fname=first_name, lname=last_name, sal=salary, alw=allowance, ded=deduction, netA=netAmount)
+            return render_template('EditPayroll.html', id=emp_id, fname=first_name, lname=last_name, sal=salary, alw=allowance, ded=deduction, netA=netAmount)
+
+    
 
 
 @app.route("/payroll", methods=["POST"])
