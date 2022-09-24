@@ -103,7 +103,7 @@
             text-align: right;
         }
 
-        .update-button-container button {
+        .updateButton {
             background-color: #007cb5;
             color: white;
             border: none;
@@ -114,6 +114,15 @@
 
         .update-button-container button:hover {
             cursor: pointer;
+        }
+
+        .secondPriorButton{
+            background-color: white;
+            color: #007cb5;
+            border: 2px solid #007cb5;
+            width: 25%;
+            height: 40px;
+            border-radius: 5px;
         }
 
         button {
@@ -137,18 +146,18 @@
                     <div class="employee-details">
                         <div class="input-box">
                                 <span class="details">Employee ID</span>
-                                <input style="display: inline-flex" type="text" placeholder="ex:0000" value="{{ id }}"
+                                <input style="display: inline-flex" type="text" id="empID" placeholder="ex:0000" value="{{ id }}"
                                     name="emp_id" />
                                 <button formaction="/getEmpName" formmethod="GET" class="get" type="submit">Get Employee</button>
                             
                         </div>
                         <div class="input-box">
                             <span class="details">First name</span>
-                            <input disabled type="text" value="{{ fname }}" name="last_name">
+                            <input disabled type="text" id="firstName" value="{{ fname }}" name="last_name">
                         </div>
                         <div class="input-box">
                             <span class="details">Last name</span>
-                            <input disabled type="text" placeholder="{{ lname }}" name="last_name">
+                            <input disabled type="text" id="lastName" placeholder="{{ lname }}" name="last_name">
                         </div>
                     </div>
 
@@ -183,7 +192,9 @@
             </div>
 
             <div class="update-button-container">
-                <button type="submit">Update Payroll</button>
+                <button class="secondPriorButton" formaction="getPayrollList" method="GET" type="submit" style="float: left;">View Payroll List</button>
+                <button class="secondPriorButton" type="reset" onclick="clearField()">Clear</button>
+                <button class="updateButton" type="submit">Update Payroll</button>
             </div>
 
         </form>
@@ -208,7 +219,15 @@
             document.getElementById('amount').innerHTML = (salary + allowance - deduction).toFixed(2);
         }
 
-
+        function clearField(){
+            document.getElementById('empID').value = '';
+            document.getElementById('firstName').value = '';
+            document.getElementById('lastName').value = '';
+            document.getElementById('salary').value = '';
+            document.getElementById('allowance').value = '';
+            document.getElementById('deduction').value = '';
+            document.getElementById('amount').innerHTML = ''
+        }
     </script>
 
 </body>
