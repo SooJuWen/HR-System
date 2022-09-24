@@ -137,6 +137,9 @@ def GetEmpName():
 
             return render_template('EditPayroll.html', id=emp_id, fname=first_name, lname=last_name, sal=salary, alw=allowance, ded=deduction, netA=netAmount)
 
+        else:
+            return render_template('EditPayroll.html')
+
     
 
 
