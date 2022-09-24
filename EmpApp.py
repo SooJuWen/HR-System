@@ -173,7 +173,7 @@ def UpdatePayroll():
 @app.route("/getPayrollList", methods=["GET"])
 def payrollList():
     #select_sql = "SELECT employee.emp_id, employee.first_name, employee.last_name, payroll.salary, payroll.allowance, payroll.deduction, payroll.net_amount FROM employee, payroll WHERE employee.emp_id = payroll.emp_id"
-    select_sql = "SELECT * FROM employee"
+    select_sql = "SELECT * FROM payroll"
     cursor = db_conn.cursor()
     cursor.execute(select_sql)
     db_conn.commit()
@@ -184,10 +184,10 @@ def payrollList():
         arr.append([])
         arr[col].append(col + 1)
         arr[col].append(result[col][0])
-        arr[col].append(result[col][1])
-        arr[col].append(result[col][2])
-        arr[col].append(result[col][3])
-        arr[col].append(result[col][4])
+        arr[col].append(str(result[col][1]))
+        arr[col].append(str(result[col][2]))
+        arr[col].append(str(result[col][3]))
+        arr[col].append(str(result[col][4]))
 
     cursor.close()
 
