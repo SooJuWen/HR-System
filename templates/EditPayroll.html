@@ -192,8 +192,7 @@
             </div>
 
             <div class="update-button-container">
-                <button class="secondPriorButton" formaction="/getPayrollList" method="GET" type="submit" style="float: left;">View Payroll List</button>
-                <button class="secondPriorButton" type="reset" onclick="clearField()">Clear</button>
+                <button class="secondPriorButton" formaction="/getPayrollList" formmethod="GET" type="submit" style="float: left;">View Payroll List</button>
                 <button class="updateButton" type="submit">Update Payroll</button>
             </div>
 
@@ -217,16 +216,6 @@
             }
 
             document.getElementById('amount').innerHTML = (salary + allowance - deduction).toFixed(2);
-        }
-
-        function clearField(){
-            document.getElementById('empID').value = '';
-            document.getElementById('firstName').value = '';
-            document.getElementById('lastName').value = '';
-            document.getElementById('salary').value = '';
-            document.getElementById('allowance').value = '';
-            document.getElementById('deduction').value = '';
-            document.getElementById('amount').innerHTML = ''
         }
     </script>
 
