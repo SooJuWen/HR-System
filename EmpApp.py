@@ -185,7 +185,7 @@ def payrollList():
 
     cursor.close()
 
-    return render_template("PayrollList.html", contents=arr)
+    return render_template("PayrollList.html", content=arr)
 
 
 if __name__ == '__main__':

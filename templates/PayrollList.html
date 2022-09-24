@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Attendance of Employees</title>
+    <title>Employee Payroll List</title>
     <style>
         h1 {
             color: #007cb5;
@@ -60,7 +60,17 @@
 
                 rowData.forEach(function(cellData) {
                     var cell = document.createElement('td');
+                    if (cellData != 1 && cellData != 0 && cellData != -1)
                         cell.appendChild(document.createTextNode(cellData));
+                    else {
+                        if (cellData == 1)
+                            var textNode = document.createTextNode("Present");
+                        else if (cellData == 0)
+                            var textNode = document.createTextNode("Absent");
+                        else
+                            var textNode = document.createTextNode(" --- ");
+                        cell.appendChild(textNode);
+                    }
                     
                     row.appendChild(cell);
                 });
@@ -72,7 +82,7 @@
         }
     </script>
 </head>
-<body onload="createTable({{contents}})">
+<body onload="createTable({{ content }})">
     <h1>Employee Payroll List</h1>
     <!-- <div>
         <form action="/">
