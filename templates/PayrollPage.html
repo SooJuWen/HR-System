@@ -61,23 +61,18 @@
     <center>
         <h1 style="color: #007cb5">Payroll</h1>
 
-        
+        <form action="/getPayrollList" method="GET">
             <div>
-                <a href="PayrollList.html">
-                    <button type="button" class="button" style="vertical-align: middle;"><span>View Employee Payroll
-                            list</span></button>
-                </a>
+                <button type="submit" class="button" style="vertical-align: middle;"><span>View Employee Payroll
+                        list</span></button>
             </div>
-    
-        <form action="/changePage" method="GET"  autocomplete="on">
-            <div style="margin-top: 20px">
-                    <button class="button" type="submit"><span>Edit Employee's payroll</span></button>
-                
-            </div>
-
         </form>
-       
 
+        <form action="/changePage" method="GET" autocomplete="on">
+            <div style="margin-top: 20px">
+                <button class="button" type="submit"><span>Edit Employee's payroll</span></button>
+            </div>
+        </form>
     </center>
 </body>
 
