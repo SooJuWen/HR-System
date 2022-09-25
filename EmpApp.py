@@ -31,6 +31,21 @@ def about():
     return render_template('www.intellipaat.com')
 
 
+@app.route("/homePage", methods=['GET'])
+def EditPayrollPage():
+    return render_template('Home.html')
+
+
+@app.route("/addEmployee", methods=['GET'])
+def EditPayrollPage():
+    return render_template('AddEmp.html')
+
+
+@app.route("/payrollPage", methods=['GET'])
+def EditPayrollPage():
+    return render_template('PayrollPage.html')
+
+
 @app.route("/changePage", methods=['GET'])
 def EditPayrollPage():
     return render_template('EditPayroll.html')
