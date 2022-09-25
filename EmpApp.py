@@ -23,7 +23,7 @@ output = {}
 
 @app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template('PayrollPage.html')
+    return render_template('Home.html')
 
 
 @app.route("/about", methods=['POST'])
@@ -32,17 +32,17 @@ def about():
 
 
 @app.route("/homePage", methods=['GET'])
-def EditPayrollPage():
+def HomePage():
     return render_template('Home.html')
 
 
 @app.route("/addEmployee", methods=['GET'])
-def EditPayrollPage():
+def AddEmployeePage():
     return render_template('AddEmp.html')
 
 
 @app.route("/payrollPage", methods=['GET'])
-def EditPayrollPage():
+def PayrollPage():
     return render_template('PayrollPage.html')
 
 
