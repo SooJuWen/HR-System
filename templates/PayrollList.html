@@ -8,11 +8,13 @@
             color: #007cb5;
             text-align: center;
         }
-        .buttonBlock{
+
+        .buttonBlock {
             width: 95%;
             margin: 0px 25px 10px 25px;
         }
-        .buttonBlock button{
+
+        .buttonBlock button {
             background-color: #007cb5;
             color: white;
             border: none;
@@ -21,9 +23,11 @@
             border-radius: 5px;
             font-size: 15px;
         }
-        button:hover{
+
+        button:hover {
             cursor: pointer;
         }
+
         table {
             border-collapse: collapse;
             width: 95%;
@@ -38,16 +42,16 @@
             padding: 10px 8px;
         }
 
-        th{
+        th {
             color: white;
         }
 
         tr:nth-child(even) {
             background-color: rgb(235, 235, 235);
-            
+
         }
 
-        tr:hover{
+        tr:hover {
             background-color: rgb(205, 205, 205);
         }
 
@@ -85,10 +89,12 @@
 
 <body onload="createTable({{content}})">
     <h1>Employee Payroll List</h1>
-    <div class="buttonBlock">
-        <button formaction="/payrollPage" formmethod="GET">Home</button>
-        <button formaction="/changePage" formmethod="GET" style="float: right;">Edit Payroll</button>
-    </div>
+    <form>
+        <div class="buttonBlock">
+            <button formaction="/payrollPage" formmethod="GET">Home</button>
+            <button formaction="/changePage" formmethod="GET" style="float: right;">Edit Payroll</button>
+        </div>
+    </form>
     <table>
         <tr style="background-color: #007cb5;">
             <th>No.</th>
