@@ -132,7 +132,7 @@
 
 </head>
 
-<body>
+<body onload="popup({{message}})">
     <h1 style="color: #007cb5; text-align: center;">
         Edit Employee Payroll
     </h1>
@@ -216,6 +216,11 @@
             }
 
             document.getElementById('amount').innerHTML = (salary + allowance - deduction).toFixed(2);
+        }
+
+        function popup(message){
+            if(message == "success")
+                alert("Information updated");
         }
     </script>
 

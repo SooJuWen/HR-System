@@ -182,7 +182,7 @@ def UpdatePayroll():
 
     cursor.close()
 
-    return render_template('EditPayroll.html')
+    return render_template('EditPayroll.html', message="success")
 
 
 @app.route("/getPayrollList", methods=["GET"])
