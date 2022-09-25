@@ -48,7 +48,7 @@ def PayrollPage():
 
 @app.route("/changePage", methods=['GET'])
 def EditPayrollPage():
-    return render_template('EditPayroll.html', message="fail")
+    return render_template('EditPayroll.html')
 
 
 @app.route("/addemp", methods=['POST'])
@@ -182,7 +182,7 @@ def UpdatePayroll():
 
     cursor.close()
 
-    return render_template('EditPayroll.html', message="success")
+    return render_template('EditPayroll.html')
 
 
 @app.route("/getPayrollList", methods=["GET"])
